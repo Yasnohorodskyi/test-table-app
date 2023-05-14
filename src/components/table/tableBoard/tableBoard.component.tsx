@@ -1,8 +1,7 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 
-import { ITableProps, ITableSizes } from "./table.types";
-import TableSearch from "./tableSearch.component";
-import "./table.styles.css";
+import { ITableProps, ITableSizes } from "../index.types";
+import "./tableBoard.styles.css";
 
 const defaultTableSizes: ITableSizes = {
   headerHeight: 3,
@@ -10,35 +9,25 @@ const defaultTableSizes: ITableSizes = {
   striped: false,
 };
 
-const Table: FC<ITableProps> = ({ data, tableHeaders, tableSizes = defaultTableSizes }) => {
-  const [tableData, setTabledate] = useState(data);
-
-  const getSearchData = (searchValue: string): void => {
-    const value = searchValue.trim().toLowerCase();
-    const filteredData = data.filter((item) => {
-      const searchBase = `${item.first_name} ${item.last_name}`.toLowerCase();
-      return searchBase.includes(value);
-    });
-    setTabledate(filteredData);
-  };
+const TableBoard: FC<ITableProps> = ({ data, tableHeaders, tableSizes = defaultTableSizes, highLightRequets }) => {
+  const highlightedFirstParam = highLightRequets?.first_name || "";
+  const highlightedSecondParam = highLightRequets?.last_name || "";
 
   const isHighlighted = (row: { [key: string]: string }): boolean => {
     const firstName = row["first_name"].toLowerCase();
     const lastName = row["last_name"].toLowerCase();
-    return firstName.includes("b") && lastName.includes("e");
+    return firstName.includes(highlightedFirstParam) && lastName.includes(highlightedSecondParam);
   };
 
   return (
-    <section className="table-wrap">
-      <TableSearch getSearchData={getSearchData} />
-      <div className="table-container">
-        <table className="table">
-          <thead className="table__headers">
+      <div className="table-board__container">
+        <table className="table-board">
+          <thead className="table-board__headers">
             <tr>
               {tableHeaders?.map((item) => (
                 <th
                   key={item}
-                  className="table__headers-item"
+                  className="table-board__headers-item"
                   style={{ height: `${tableSizes?.headerHeight}rem` }}
                 >
                   {item}
@@ -46,13 +35,13 @@ const Table: FC<ITableProps> = ({ data, tableHeaders, tableSizes = defaultTableS
               ))}
             </tr>
           </thead>
-          <tbody className="table__content">
-            {tableData.map((row, i) => (
+          <tbody className="table-board__content">
+            {data.map((row, i) => (
               <tr key={i} {...(tableSizes.striped && { className: "striped" })}>
                 {Object.keys(row).map((key) => (
                   <td
                     key={key}
-                    className={`table__content-item ${
+                    className={`table-board__content-item ${
                       isHighlighted(row) && (key === "first_name" || key === "last_name")
                         ? "highlighted"
                         : ""
@@ -66,8 +55,7 @@ const Table: FC<ITableProps> = ({ data, tableHeaders, tableSizes = defaultTableS
           </tbody>
         </table>
       </div>
-    </section>
   );
 };
 
-export default Table;
+export default TableBoard;

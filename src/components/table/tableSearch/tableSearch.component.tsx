@@ -1,7 +1,8 @@
 import { FC, ChangeEvent, useState } from "react";
 import { ReactComponent as Glass } from "../../../assets/svg/glass.svg";
 
-import { ITableSearchProps } from "./table.types";
+import { ITableSearchProps } from "../index.types";
+import "./tableSearch.styles.css";
 
 const TableSearch: FC<ITableSearchProps> = ({ getSearchData }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -12,9 +13,9 @@ const TableSearch: FC<ITableSearchProps> = ({ getSearchData }) => {
   };
 
   return (
-    <div className="table__search">
-      <Glass className="table__search-icon" />
-      <input className="table__search-input" type="text" value={searchTerm} onChange={handlerSearch} />
+    <div className="table-search">
+      <Glass className="table-search__icon" />
+      <input className="table-search__input" type="text" value={searchTerm} onChange={handlerSearch} />
     </div>
   );
 };
