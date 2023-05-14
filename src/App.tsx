@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Table from "./components/ui/table/table.component";
+import Table from "./components/table/index.component";
 import data from "./content/mockData/mock.json";
 
 const tableHeaders = [
@@ -18,6 +18,13 @@ const tableSizes = {
   striped: true,
 };
 
+// const searchRequest = "Ken";
+
+const highLightRequets = {
+  first_name: "b",
+  last_name: "e",
+};
+
 function App() {
   return (
     <div className="App">
@@ -27,6 +34,8 @@ function App() {
           data={data}
           tableHeaders={tableHeaders}
           tableSizes={tableSizes}
+          highLightRequets={highLightRequets}
+          // searchRequest={searchRequest}
         />
       </header>
     </div>
