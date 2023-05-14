@@ -1,11 +1,11 @@
-.table-search {
+.input-search {
   position: relative;
   width: 20rem;
   height: 1.8rem;
   margin-bottom: 1.5rem;
 }
 
-.table-search__icon {
+.input-search__icon {
   position: absolute;
   top: 0.79rem ;
   left: 0;
@@ -13,7 +13,7 @@
   height: 1.5rem;
 }
 
-.table-search__input {
+.input-search__input {
   padding: 0.2rem 3rem;
   border: 2px solid #dedce2;
   border-radius: 0.2rem;
@@ -23,7 +23,7 @@
   font-size: 1.2rem;
 }
 
-.table-search__input:hover,
-.table-search__input:focus {
+.input-search__input:hover,
+.input-search__input:focus {
   border-color: #6f7ad9;
 }

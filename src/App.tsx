@@ -18,7 +18,7 @@ const tableSizes = {
   striped: true,
 };
 
-// const searchRequest = "Ken";
+const searchRequest = "Ken";
 
 const highLightRequets = {
   first_name: "b",
@@ -35,7 +35,7 @@ function App() {
           tableHeaders={tableHeaders}
           tableSizes={tableSizes}
           highLightRequets={highLightRequets}
-          // searchRequest={searchRequest}
+          searchRequest={searchRequest}
         />
       </header>
     </div>

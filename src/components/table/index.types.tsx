@@ -14,7 +14,3 @@ export interface ITableProps {
     last_name: string;
   };
 };
-
-export interface ITableSearchProps {
-  getSearchData: (value: string) => void;
-}

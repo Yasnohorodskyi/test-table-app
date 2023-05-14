@@ -1,8 +1,8 @@
 import { FC, useState, useEffect } from "react";
 
 import { ITableProps, ITableSizes } from "./index.types";
-import TableSearch from "./tableSearch/tableSearch.component";
-import TableBoard from "./tableBoard/tableBoard.component";
+import InputSearch from "../inputSearch/index.component";
+import TableBoard from "./tableBoard/index.component";
 
 const defaultTableSizes: ITableSizes = {
   headerHeight: 3,
@@ -34,7 +34,7 @@ const Table: FC<ITableProps> = ({
 
   return (
     <section className="table-wrap">
-      <TableSearch getSearchData={getSearchData} />
+      <InputSearch getSearchData={getSearchData} />
       <TableBoard
         data={tableData}
         tableSizes={tableSizes}

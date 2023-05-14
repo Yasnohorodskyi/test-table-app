@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import { ITableProps, ITableSizes } from "../index.types";
-import "./tableBoard.styles.css";
+import "./index.styles.css";
 
 const defaultTableSizes: ITableSizes = {
   headerHeight: 3,
