@@ -29,15 +29,16 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Reusable Table Component</h1>
-        <Table
+        <h1>Table</h1>
+      </header>
+      <Table
           data={data}
           tableHeaders={tableHeaders}
           tableSizes={tableSizes}
           highLightRequets={highLightRequets}
+          scrollable
           searchRequest={searchRequest}
         />
-      </header>
     </div>
   );
 }

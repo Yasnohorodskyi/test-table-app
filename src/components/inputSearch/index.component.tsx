@@ -7,15 +7,21 @@ import "./index.styles.css";
 const InputSearch: FC<ISearchProps> = ({ getSearchData }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handlerSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
-    getSearchData(e.target.value);
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    getSearchData(value);
   };
 
   return (
     <div className="input-search">
       <Glass className="input-search__icon" />
-      <input className="input-search__input" type="text" value={searchTerm} onChange={handlerSearch} />
+      <input
+        className="input-search__input"
+        type="text"
+        value={searchTerm}
+        onChange={handleSearch}
+      />
     </div>
   );
 };

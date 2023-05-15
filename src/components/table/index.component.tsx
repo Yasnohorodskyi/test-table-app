@@ -1,23 +1,20 @@
 import { FC, useState, useEffect } from "react";
 
-import { ITableProps, ITableSizes } from "./index.types";
+import { ITableProps} from "./tableBoard/index.types";
 import InputSearch from "../inputSearch/index.component";
 import TableBoard from "./tableBoard/index.component";
 
-const defaultTableSizes: ITableSizes = {
-  headerHeight: 3,
-  rowHeight: 3,
-  striped: false,
-};
+import "./index.styles.css";
 
 const Table: FC<ITableProps> = ({
   data,
   tableHeaders,
-  tableSizes = defaultTableSizes,
+  tableSizes,
   highLightRequets,
   searchRequest = "",
+  scrollable
 }) => {
-  const [tableData, setTabledate] = useState(data);
+  const [tableData, setTableDate] = useState(data);
 
   const getSearchData = (searchValue: string): void => {
     const value = searchValue.trim().toLowerCase();
@@ -25,12 +22,12 @@ const Table: FC<ITableProps> = ({
       const searchBase = `${item.first_name} ${item.last_name}`.toLowerCase();
       return searchBase.includes(value);
     });
-    setTabledate(filteredData);
+    setTableDate(filteredData);
   };
 
   useEffect(() => {
     if (searchRequest) getSearchData(searchRequest);
-  }, []);
+  }, [searchRequest]);
 
   return (
     <section className="table-wrap">
@@ -40,6 +37,7 @@ const Table: FC<ITableProps> = ({
         tableSizes={tableSizes}
         tableHeaders={tableHeaders}
         highLightRequets={highLightRequets}
+        scrollable={scrollable}
       />
     </section>
   );
